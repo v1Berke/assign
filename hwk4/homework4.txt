@@ -1,1 +1,240 @@
+STEP A:
+git config --global user.name "Berke"
+git config --global user.email "bbrk.iso@gmail.com"
+git config --global core.editor "notepad"
+
+git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=schannel
+core.autocrlf=true
+core.fscache=true
+core.symlinks=false
+pull.rebase=false
+credential.helper=manager
+credential.https://dev.azure.com.usehttppath=true
+init.defaultbranch=master
+core.editor=notepad
+user.name=Berke
+user.email=bbrk.iso@gmail.com
+
+STEP B:
+cd documents
+git clone https://github.com/v1Berke/assign
+
+cd assign
+dir /a
+
+cd .git
+dir /a
+ Volume in drive C has no label.
+ Volume Serial Number is C094-81C4
+
+ Directory of C:\Users\bbrki\Documents\assign\.git
+
+01/01/2026  09:59 AM    <DIR>          .
+01/01/2026  09:59 AM    <DIR>          ..
+01/01/2026  09:59 AM               292 config
+01/01/2026  09:59 AM                73 description
+01/01/2026  09:59 AM                21 HEAD
+01/01/2026  09:59 AM    <DIR>          hooks
+01/01/2026  09:59 AM               254 index
+01/01/2026  09:59 AM    <DIR>          info
+01/01/2026  09:59 AM    <DIR>          logs
+01/01/2026  09:59 AM    <DIR>          objects
+01/01/2026  09:59 AM               112 packed-refs
+01/01/2026  09:59 AM    <DIR>          refs
+               5 File(s)            752 bytes
+               7 Dir(s)  81,564,905,472 bytes free
+
+STEP C:
+[Department of Software Engineering, Işık University](https://www.isikun.edu.tr/akademik/muhendislik-fakultesi/bolumler-ve-programlar/bilgisayar-muhendisligi/programlar/lisans-programi/yazilim-muhendisligi)
+
+STEP D:
+Rules in my .gitignore:
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Eclipse/IntelliJ/VSCode project files
+*.classpath
+*.project
+*.settings/
+.idea/
+*.iml
+
+# MacOS / Windows system files
+.DS_Store
+Thumbs.db
+
+
+STEP E:
+git branch feature-1
+git checkout feature-1
+
+cd hwk4
+
+# Current working directory: C:\Users\bbrki\Documents\assign\hwk4
+
+
+
+STEP F:
+# Added RangeBetweenNumbers.java to hwk4
+git add hwk4/RangeBetweenNumbers.java
+git commit -m "satisfying requirement one"
+
+# Question answers:
+Commits on feature-1 branch so far:
+- setting up gitignore (STEP D)
+- created feature-1 branch (STEP E)
+- satisfying requirement one (STEP F)
+
+Files in hwk4 directory on feature-1 branch:
+- RangeBetweenNumbers.java
+
+Files in hwk4 directory on main branch:
+- (none, hwk4 directory was created in feature-1)
+
+
+STEP G:
+# Merge feature-1 into main
+cd C:\Users\bbrki\Documents\assign
+git checkout main
+git merge feature-1
+
+# Files affected: 
+- hwk4/RangeBetweenNumbers.java (added to main branch from feature-1)
+
+
+STEP H:
+# Create a new branch feature-2 off main
+cd C:\Users\bbrki\Documents\assign
+git checkout main
+git branch feature-2
+git checkout feature-2
+
+Current working directory: C:\Users\bbrki\Documents\assign
+Active branch: feature-2
+
+STEP I:
+# Create a new branch feature-3 off main
+cd C:\Users\bbrki\Documents\assign
+git checkout main
+git branch feature-3
+git checkout feature-3
+
+Current working directory: C:\Users\bbrki\Documents\assign
+Active branch: feature-3
+
+
+STEP J:
+# Modify RangeBetweenNumbers.java to print only odd numbers on feature-2 branch
+cd C:\Users\bbrki\Documents\assign
+git checkout feature-2
+# Edited RangeBetweenNumbers.java main method to print only odd numbers
+git status
+git add hwk4/RangeBetweenNumbers.java
+git commit -m "satisfying requirement change two"
+
+# Question answers:
+Commits on feature-2 branch:
+- satisfying requirement change two (this commit)
+(feature-2 was branched off main with no prior commits on this branch)
+
+STEP K:
+# Modify RangeBetweenNumbers.java to print only even numbers on feature-3 branch
+cd C:\Users\bbrki\Documents\assign
+git checkout feature-3
+# Edited RangeBetweenNumbers.java main method to print only even numbers
+git status
+git add hwk4/RangeBetweenNumbers.java
+git commit -m "satisfying requirement change three"
+
+# Question answers:
+Commits on feature-3 branch so far:
+- satisfying requirement change three (this commit)
+(feature-3 was branched off main with no prior commits on this branch)
+
+STEP L:
+# Merge feature-2 into main
+cd C:\Users\bbrki\Documents\assign
+git checkout main
+git merge feature-2
+
+git add hwk4/RangeBetweenNumbers.java
+git commit -m "Merge feature-2 into main, keeping only odd numbers functionality"
+
+# Files affected:
+- hwk4/RangeBetweenNumbers.java (main now prints only odd numbers)
+
+STEP M:
+# Merge feature-3 into main
+cd C:\Users\bbrki\Documents\assign
+git checkout main
+git merge feature-3
+# If merge conflicts appear, resolve them so that main reflects only feature-3 functionality (even numbers)
+git add hwk4/RangeBetweenNumbers.java
+git commit -m "Merge feature-3 into main, keeping only even numbers functionality"
+
+# Question answers:
+Differences between main and other branches (git diff output):
+
+## main vs feature-1
+diff --git a/hwk4/RangeBetweenNumbers.java b/hwk4/RangeBetweenNumbers.java
+index bc14082..c11def4 100644
+--- a/hwk4/RangeBetweenNumbers.java
++++ b/hwk4/RangeBetweenNumbers.java
+@@ -16,11 +16,9 @@ public class RangeBetweenNumbers {
+         int start = Math.min(first, second) + 1;
+         int end = Math.max(first, second);
+
+-        System.out.println("Even numbers between " + first + " and " + second + ":");
++        System.out.println("Numbers between the inputs:");
+         for (int i = start; i < end; i++) {
+-            if (i % 2 == 0) {
+-                System.out.print(i + " ");
+-            }
++            System.out.print(i + " ");
+         }
+
+         scan.close();
+
+## main vs feature-2
+diff --git a/hwk4/RangeBetweenNumbers.java b/hwk4/RangeBetweenNumbers.java
+index bc14082..e334770 100644
+--- a/hwk4/RangeBetweenNumbers.java
++++ b/hwk4/RangeBetweenNumbers.java
+@@ -16,9 +16,9 @@ public class RangeBetweenNumbers {
+         int start = Math.min(first, second) + 1;
+         int end = Math.max(first, second);
+
+-        System.out.println("Even numbers between " + first + " and " + second + ":");
++        System.out.println("Odd numbers between " + first + " and " + second + ":");
+         for (int i = start; i < end; i++) {
+-            if (i % 2 == 0) {
++            if (i % 2 != 0) {
+                 System.out.print(i + " ");
+             }
+         }
+
+## main vs feature-3
+No difference (empty diff) because main now has the same code as feature-3 (even numbers functionality)
+
+
+
+
 

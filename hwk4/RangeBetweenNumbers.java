@@ -16,9 +16,9 @@ public class RangeBetweenNumbers {
         int start = Math.min(first, second) + 1;
         int end = Math.max(first, second);
 
-        System.out.println("Odd numbers between " + first + " and " + second + ":");
+        System.out.println("Even numbers between " + first + " and " + second + ":");
         for (int i = start; i < end; i++) {
-            if (i % 2 != 0) { 
+            if (i % 2 == 0) {
                 System.out.print(i + " ");
             }
         }
